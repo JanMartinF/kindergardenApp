@@ -1,12 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import Login from './components/Login';
+import Home from './container/Home';
+import { fetchUser } from './utils/fetchUser';
+// login and home Route
+const App = () => {
+  const navigate = useNavigate();
 
-function App() {
+  useEffect(() => {
+    const user = fetchUser();
+
+    if(!user) navigate('/login');
+  }, [])
   return (
-    <div>
-      App
-    </div>
-  );
-}
+          <Routes>
+            <Route path="login" element={<Login />}/>
+            <Route path="/*" element={<Home />}/>
+          </Routes>
+          )
+};
 
 export default App;
