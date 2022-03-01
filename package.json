@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@emotion/react": "^11.8.1",
+    "react-router-dom": "^6.2.2",
+    "use-effect": "^0.0.1",
+    "use-state": "^0.0.3"
+  }
+}
