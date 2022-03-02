@@ -1,4 +1,5 @@
 const express = require('express');
+const credentials = require('./dbconfig')
 const app = express();
 const port = 3000;
 const path = require('path');
@@ -11,4 +12,5 @@ app.get('/', function(req, res) {
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
+  console.log(credentials.user)
 })
