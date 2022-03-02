@@ -1,0 +1,44 @@
+[
+    {
+      "id": 1,
+      "vorname": "Jenny",
+      "nachname": "Schulz",
+      "geburtsdatum": "01.01.2011",
+      "geschlecht": "weiblich"
+    },
+    {
+      "id": 2,
+      "vorname": "Jessica",
+      "nachname": "Mueller",
+      "geburtsdatum": "02.02.2011",
+      "geschlecht": "weiblich"
+    },
+    {
+      "id": 3,
+      "vorname": "Tony",
+      "nachname": "Stark",
+      "geburtsdatum": "03.03.2011",
+      "geschlecht": "männlich"
+    },
+    {
+      "id": 4,
+      "vorname": "Jeremy",
+      "nachname": "Friedrich",
+      "geburtsdatum": "04.04.2011",
+      "geschlecht": "männlich"
+    },
+    {
+      "id": 5,
+      "vorname": "Maik",
+      "nachname": "Dingens",
+      "geburtsdatum": "05.05.2011",
+      "geschlecht": "männlich"
+    },
+    {
+      "id": 6,
+      "vorname": "Maik",
+      "nachname": "Dingens",
+      "geburtsdatum": "05.05.2011",
+      "geschlecht": "männlich"
+    }
+  ]
