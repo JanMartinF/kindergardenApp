@@ -2,7 +2,7 @@ import React from "react"
 
 
 /* Spalten noch erweitern !!*/
-const RowEditieren = () => {
+const RowEditieren = ({editFormData, handleEditFormChange}) => {
     return (
         <tr>
             <td>
@@ -11,6 +11,8 @@ const RowEditieren = () => {
                     required="required" 
                     placeholder="Vornamen eingeben" 
                     name="vorname"
+                    value={editFormData.vorname}
+                    onChange={handleEditFormChange}
                 ></input>
             </td>
             <td>
@@ -19,6 +21,8 @@ const RowEditieren = () => {
                     required="required" 
                     placeholder="Nachnamen eingeben" 
                     name="nachname"
+                    value={editFormData.nachname}
+                    onChange={handleEditFormChange}
                     ></input>
                 </td>
                 <td>
@@ -27,6 +31,8 @@ const RowEditieren = () => {
                     required="required" 
                     placeholder="Geburtsdatum eingeben" 
                     name="geburtsdatum"
+                    value={editFormData.geburtsdatum}
+                    onChange={handleEditFormChange}
                     ></input>
                 </td>
                 <td>
@@ -35,7 +41,12 @@ const RowEditieren = () => {
                     required="required" 
                     placeholder="Geschlecht eingeben" 
                     name="geschlecht"
+                    value={editFormData.geschlecht}
+                    onChange={handleEditFormChange}
                     ></input>
+            </td>
+            <td>
+                <button type="submit">Speichern</button>
             </td>
         </tr>        
         

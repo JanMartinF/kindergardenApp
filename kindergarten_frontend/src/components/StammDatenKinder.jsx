@@ -10,7 +10,14 @@ const StammDatenKinder = () => {
     vorname:'',
     nachname:'',
     geburtsdatum:'',
-    geschlecht:''
+    geschlecht:'',
+  });
+
+  const [editFormData, setEditFormData] = useState({
+    vorname:'',
+    nachname:'',
+    geburtsdatum:'',
+    geschlecht:'',
   });
 
   const [editContactId, setEditContactId] = useState(null);
@@ -26,6 +33,18 @@ const StammDatenKinder = () => {
 
     setAddFormData(newFormData)
   };
+
+  const handleEditFormChange = (event) => {
+    event.preventDefault();
+
+    const fieldName = event.target.getAttribute("name");
+    const fieldValue = event.target.value;
+
+    const newFormData = { ...editFormData };
+    newFormData[fieldName] = fieldValue;
+
+    setEditFormData(newFormData);
+  }
 
   const handleAddFormSubmit = (event) => {
     event.preventDefault();
@@ -43,15 +62,44 @@ const StammDatenKinder = () => {
     const newContacts = [...contacts, newContact];
     setContacts(newContacts);
   };
+    const handleEditFormSubmit = (event)=>{
+      event.preventDefault();
+
+      const editedContact = {
+        id: editContactId,
+        vorname: editFormData.vorname,
+        nachname: editFormData.nachname,
+        geburtsdatum: editFormData.geburtsdatum,
+        geschlecht: editFormData.geschlecht,
+      }
+      const newContacts = [...contacts];
+
+      const index = contacts.findIndex((contact)=> contact.id === editContactId);
+
+      newContacts[index] = editedContact;
+
+      setContacts(newContacts);
+      setEditContactId(null)
+
+    };
 
     const handleEditClick = (event, contact)=> {
       event.preventDefault();
       setEditContactId(contact.id);
-    }
+
+      const formValues = {
+        vorname: contact.vorname,
+        nachname: contact.nachname,
+        geburtsdatum: contact.geburtsdatum,
+        geschlecht: contact.geschlecht,
+      }
+
+      setEditFormData(formValues);
+    };
 
   return (
     <div className='app-container'>
-      <form>
+      <form onSubmit={handleEditFormSubmit}>
         <table>
           <thead>
             <tr>
@@ -70,7 +118,7 @@ const StammDatenKinder = () => {
               <th>Allergien</th>
               <th>Krankheiten</th>
               <th>Verhaltensauffälligkeiten</th> */}
-              <th>Editieren</th>
+              <th>Editieren / Speichern</th>
             </tr>
           </thead>
           <tbody>
@@ -79,7 +127,7 @@ const StammDatenKinder = () => {
 
             {contacts.map((contact)=> (
               <Fragment>
-                { editContactId === contact.id ? (<RowEditieren />) : (<RowLesen contact={contact} handleEditClick={handleEditClick}/>)}               
+                { editContactId === contact.id ? (<RowEditieren editFormData={editFormData} handleEditFormChange={handleEditFormChange}/>) : (<RowLesen contact={contact} handleEditClick={handleEditClick}/>)}               
 
               </Fragment>
               
@@ -107,7 +155,7 @@ const StammDatenKinder = () => {
           <option value="katholisch"></option>
           <option value="evangelisch"></option>
           <option value="muslimisch"></option>
-        </select> }
+        </select> 
         <input type="text" name="Vorname" require="required" placeholder="Vornamen eingeben"></input> */}
 
 
