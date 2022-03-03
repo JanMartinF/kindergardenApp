@@ -1,7 +1,8 @@
 
 const { Pool, Client } = require("pg");
 const testConst = require("pg");
-const cred = require('./dbconfig')
+const express = require("express");
+const cred = require('./dbconfig');
 
 const credentials = {
   user: cred.user,
@@ -58,11 +59,26 @@ async function checkForContent(table='parent') {
   });
 }
 
-// Use a self-calling function so we can use async / await.
+async function letsDoSomeTesting(){
+  const client = new Client(credentials);
+  await client.connect();
+  const now = await client.query("SELECT json_agg(child) FROM child", (err, res)=> {
+  console.log(res.rows[0]);
+  // console.log(res.rows[0]);
+  let sampleDict2 = { "fuck": "this"}
+  console.log(typeof sampleDict2);
+  // console.log(sampleDict);
+  client.end();
+  return res.rows[0]
+});
+}
 
+
+// Use a self-calling function so we can use async / await.
 (async () => {
+  letsDoSomeTesting();
   // await dbInit();
-  await checkForContent('child');
+  // await checkForContent('child');
   // await addToDb(sqlTemp);
   // await addToDbLoop('parent', 9)
 })();

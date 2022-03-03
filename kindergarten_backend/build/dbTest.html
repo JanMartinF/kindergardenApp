@@ -14,21 +14,35 @@
         <button onclick="getData()" type="submit">this is the submit button</button>
     </form> -->
     <button onclick="clickFunc()">a new test button</button>
+    <div id="displayDiv"></div>
 </body>
 <script>
+    let dict = []
     async function getData(){
-        let string = 'something something'
-        const response = await fetch(`/getData?name=${string}`)
-        response.json().then(data => {
-            console.log(data)
+        const response = await fetch(`/getDataNow`)
+        const responseJson = await response.json().then(data => {
+            dict = data
+            displayData(data)
         })
+        console.log(dict)
         return 
     }
+
     function clickFunc(){
+        console.log('button was clicked')
         // getData().then(data => {
         //     console.log(data)
         // })
         getData()
+    }
+    function displayData(data){
+        data.forEach(element => {
+            const p = document.createElement("p")
+            const node = document.createTextNode(element.name_child)
+            p.appendChild(node)
+            const parentDiv = document.getElementById("displayDiv")
+            parentDiv.appendChild(p)
+        });
     }
 </script>
 </html>
