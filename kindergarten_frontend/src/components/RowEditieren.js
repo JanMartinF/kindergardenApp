@@ -2,7 +2,7 @@ import React from "react"
 
 
 /* Spalten noch erweitern !!*/
-const RowEditieren = ({editFormData, handleEditFormChange}) => {
+const RowEditieren = ({editFormData, handleEditFormChange, handleCancelClick}) => {
     return (
         <tr>
             <td>
@@ -47,6 +47,7 @@ const RowEditieren = ({editFormData, handleEditFormChange}) => {
             </td>
             <td>
                 <button type="submit">Speichern</button>
+                <button type="button" onClick={handleCancelClick}>Abbruch</button>
             </td>
         </tr>        
         

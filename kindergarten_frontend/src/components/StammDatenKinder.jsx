@@ -97,7 +97,23 @@ const StammDatenKinder = () => {
       setEditFormData(formValues);
     };
 
-  return (
+    const handleCancelClick = () => {
+      setEditContactId(null);
+    };
+
+    /*Delete Row*/
+    const handleDeleteClick = (contactId) => {
+      const newContacts = [...contacts];
+
+      const index = contacts.findIndex((contact)=>contact.id === contactId);
+
+      newContacts.splice(index, 1);
+
+      setContacts(newContacts);
+    };
+
+
+    return (
     <div className='app-container'>
       <form onSubmit={handleEditFormSubmit}>
         <table>
@@ -118,7 +134,7 @@ const StammDatenKinder = () => {
               <th>Allergien</th>
               <th>Krankheiten</th>
               <th>Verhaltensauffälligkeiten</th> */}
-              <th>Editieren / Speichern</th>
+              <th>Editieren</th>
             </tr>
           </thead>
           <tbody>
@@ -127,8 +143,18 @@ const StammDatenKinder = () => {
 
             {contacts.map((contact)=> (
               <Fragment>
-                { editContactId === contact.id ? (<RowEditieren editFormData={editFormData} handleEditFormChange={handleEditFormChange}/>) : (<RowLesen contact={contact} handleEditClick={handleEditClick}/>)}               
-
+                { editContactId === contact.id ? (
+                <RowEditieren 
+                  editFormData={editFormData} 
+                  handleEditFormChange={handleEditFormChange}
+                  handleCancelClick={handleCancelClick}
+                />
+                ) : (
+                <RowLesen 
+                  contact={contact} 
+                  handleEditClick={handleEditClick}
+                  handleDeleteClick={handleDeleteClick}
+                />)}               
               </Fragment>
               
             ))}
