@@ -5,6 +5,7 @@ import Home from './components/Home';
 import DienstUrlaub from './components/DienstUrlaub';
 import Logout from './components/Logout';
 import Stammdaten from './components/Stammdaten';
+import Login from './components/Login';
 
 
 
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/dienstplaene" exact element={<DienstUrlaub />} />
         <Route path="/Stammdaten" exact element={<Stammdaten />} />
         <Route path="/logout" exact element={<Logout />} />
+        <Route path="/login" exact element={<Login />} />
       </Routes>
     </Router>
   )
