@@ -1,16 +1,14 @@
-import React from 'react'
-import LandingPage from './components/LandingPage'
-import Login from './components/Login'
-import DienstUrlaub from './components/DienstUrlaub';
+import logo from './logo.svg';
+import './App.css';
+import StammDatenKinder from './components/StammDatenKinder';
 
-const App = () => {
+function App() {
   return (
     <div>
-      <Login />
-      <LandingPage />
-      <DienstUrlaub />
+      <StammDatenKinder />
+
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
